@@ -16,7 +16,12 @@ var messageFilePtr = flag.String("message", "", "path to file containing the mes
 
 func usage() {
 	fmt.Println("Usage:")
-	fmt.Println("decryptpgpmessage -key=<path to your private pgp key file> -message=<path to message encrypted with your public pgp key> -password=<password for the armored message>")
+	fmt.Println("	-key=<path to your private pgp key file>")
+	fmt.Println("	-message=<path to message encrypted with your public pgp key>")
+	fmt.Println("	-password=<password for the armored message>")
+	fmt.Println("All flags must be set!")
+	fmt.Println("Correct usage:")
+	fmt.Println("	decryptpgpmessage -key=<path to your private pgp key file> -message=<path to message encrypted with your public pgp key> -password=<password for the armored message>")
 }
 
 func main() {
