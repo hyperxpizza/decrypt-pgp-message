@@ -14,23 +14,27 @@ var privateKeyPathPtr = flag.String("key", "", "path to the file with the privat
 var passwordPtr = flag.String("password", "", "passphrase required for decryption")
 var messageFilePtr = flag.String("message", "", "path to file containing the message")
 
-func main() {
+func usage() {
+	fmt.Println("Usage:")
+	fmt.Println("decryptpgpmessage -key=<path to your private pgp key file> -message=<path to message encrypted with your public pgp key> -password=<password for the armored message>")
+}
 
+func main() {
 	flag.Parse()
 
 	//validate args
 	if privateKeyPathPtr == nil || *privateKeyPathPtr == "" {
-		log.Fatal("Private key path cannot be empty!")
+		usage()
 		os.Exit(1)
 	}
 
 	if passwordPtr == nil || *passwordPtr == "" {
-		log.Fatal("Password cannot be empty!")
+		usage()
 		os.Exit(1)
 	}
 
 	if messageFilePtr == nil || *messageFilePtr == "" {
-		log.Fatal("Path to the message cannot be empty!")
+		usage()
 		os.Exit(1)
 	}
 
